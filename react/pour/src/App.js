@@ -1,5 +1,6 @@
 import React from "react";
 import Pour from "./Views/Pour";
+import Configure from "./Views/Configure";
 
 function App() {
   const session = {
@@ -9,8 +10,10 @@ function App() {
   };
 
   return (
-    <div class="">
-      <Pour session={session} />
+    <div className="h-full">
+      <h5 className="p-3 text-3xl font-bold mb-4 mt-0">Pour</h5>
+      {/* <Pour session={session} /> */}
+      <Configure />
     </div>
   );
 }
