@@ -7,8 +7,8 @@ const Configure = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <label className="mb-4 text-2xl text-left">
-        Set Coffee Weight (in grams):
+      <label className="mb-4 text-2xl text-center">
+        How much coffee you got? (in grams)
       </label>
       <Basic
         diameter={200}

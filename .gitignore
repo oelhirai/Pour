@@ -11,6 +11,9 @@ logs
 node_modules
 bower_components
 
+# Generated CSS Classes
+**/tailwind.css
+
 *.sublime*
 
 psd
