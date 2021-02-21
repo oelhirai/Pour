@@ -9,10 +9,14 @@ Currently, a person may use Pour to guide their pourover sessions:
   - When using a scale, this may help you keep track of your progress 
 
 **Pure React Demo**:
-<img src="./react/pour/public/pour_react.gif" width=400 />
+
+<img src="./react/pour/public/pour_react.gif" width=300 />
 
 **What this app does not do (yet?)**
 - Give guidance on grind size for coffee
 - Allow input of how much water as opposed to coffee
 - Set different ratios of coffee-to-water
   - Could be nice if using a Chemex with a larger weight of coffee (40g+) 
+
+Developer notes:
+- Create a React Native version
