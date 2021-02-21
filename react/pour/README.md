@@ -9,13 +9,13 @@ This is the pure react rendition of the Pour app. A user may:
 
 <img src="./public/pour_react.gif" width=400 />
 
-**What this app does not do (yet?)
-**- Give guidance on grind size for coffee
+**What this app does not do (yet?)**
+- Give guidance on grind size for coffee
 - Allow input of how much water as opposed to coffee
 - Set different ratios of coffee-to-water
   - Could be nice if using a Chemex with a larger weight of coffee (40g+) 
 
-_Developer notes:
-_- May be good to refactor view elements into a single grid
+_Developer notes_ 
+- May be good to refactor view elements into a single grid
 - Understand optimizations around inline componenet declarations and view renderings
 - Ensure view is responsive for all screen sizes.
