@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Basic } from "react-dial-knob";
-import { usePourSession } from "../Hooks/usePourSession";
+import { Link } from "react-router-dom";
 
-// TODO - Handle erroneous input, or use some type of error-prohibitive input (like a dial)
-function Configure() {
+const Configure = () => {
   const [desiredCoffeeWeight, setDesiredCoffeeWeight] = useState(15);
-  let session = usePourSession(desiredCoffeeWeight);
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -24,11 +22,14 @@ function Configure() {
         }}
         onValueChange={setDesiredCoffeeWeight}
       />
-      <div className="absolute bottom-0 left-1/4 w-1/2 p-4 my-4 bg-blue-400 rounded-md text-white text-center">
+      <Link
+        to={`/pour/${desiredCoffeeWeight}`}
+        className="absolute bottom-0 left-1/4 w-1/2 p-4 my-4 bg-blue-400 rounded-md text-white text-center"
+      >
         Start
-      </div>
+      </Link>
     </div>
   );
-}
+};
 
 export default Configure;

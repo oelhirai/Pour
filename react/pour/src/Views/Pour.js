@@ -1,52 +1,63 @@
 import React, { useState } from "react";
 import Sesh from "../Components/Sesh";
 import Step from "../Components/Step";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { usePourSession } from "../Hooks/usePourSession";
 
-function Pour(props) {
-  const pours = props.session.pours;
+const Pour = () => {
   const [pourIndex, setPourIndex] = useState(0);
   const [weight, setWeight] = useState(0);
   const [isActive, setIsActive] = useState(true);
 
-  var currentStep = pourIndex + 1;
+  const nextPourIndex = pourIndex + 1;
+  const { coffeeWeight } = useParams();
+  const { totalWaterWeight, pours } = usePourSession(coffeeWeight);
 
-  function isFinishedPouring(index) {
-    return index === pours.length;
-  }
+  const isValidPour = index => {
+    return index < pours.length;
+  };
 
-  function updatePour() {
-    var nextPourIndex = pourIndex + 1;
-    if (isFinishedPouring(nextPourIndex)) {
-      setIsActive(false);
-    } else {
+  const updatePour = () => {
+    if (isValidPour(nextPourIndex)) {
       setWeight(weight + pours[pourIndex]);
       setPourIndex(nextPourIndex);
+    } else {
+      setIsActive(false);
     }
-  }
+  };
 
   return (
     <div>
       <div className="flex flex-col p-3">
         <Sesh
           isActive={isActive}
-          coffeeWeight={props.session.totalCoffeeWeight}
-          waterWeight={props.session.totalWaterWeight}
+          coffeeWeight={coffeeWeight}
+          waterWeight={totalWaterWeight}
         />
         <Step
-          step={currentStep}
+          step={nextPourIndex} // nextPourIndex reflects non 0-indexed step
           targetSteps={pours.length}
           weight={pours[pourIndex]}
           targetWeight={weight + pours[pourIndex]}
         />
       </div>
-      <div
-        onClick={updatePour}
-        className="absolute bottom-0 left-1/4 w-1/2 p-4 my-4 bg-blue-400 rounded-md text-white text-center"
-      >
-        {currentStep === pours.length ? "Stop" : "Next"}
+      <div className="absolute bottom-0 w-full flex flex-row justify-evenly">
+        <Link
+          to="/"
+          className="w-1/4 p-3 my-4 bg-gray-400 rounded-md text-white text-center"
+        >
+          Setup
+        </Link>
+        <div
+          onClick={updatePour}
+          className="w-1/2 p-3 my-4 bg-blue-400 rounded-md text-white text-center"
+        >
+          {isValidPour(nextPourIndex) ? "Next" : "Stop"}
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Pour;

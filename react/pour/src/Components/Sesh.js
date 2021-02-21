@@ -1,18 +1,16 @@
 import React from "react";
 import Timer from "./Timer";
 
-function Sesh(props) {
-  return (
-    <div className="mb-4 text-4xl text-right">
-      <Timer isActive={props.isActive} />
-      <p>
-        Coffee <b>{props.coffeeWeight}g</b>
-      </p>
-      <p>
-        Water <b>{props.waterWeight}g</b>
-      </p>
-    </div>
-  );
-}
+const Sesh = ({ isActive = false, coffeeWeight = 0, waterWeight = 0 }) => (
+  <div className="mb-4 text-4xl text-right">
+    <Timer isActive={isActive} />
+    <p>
+      Coffee <b>{coffeeWeight}g</b>
+    </p>
+    <p>
+      Water <b>{waterWeight}g</b>
+    </p>
+  </div>
+);
 
 export default Sesh;
